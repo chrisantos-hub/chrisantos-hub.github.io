@@ -1,0 +1,141 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>tgp</title> 
+        <meta charset="UTF-8"> 
+        <meta name="description" content="This is my first website. It includes lots of information about my life."> 
+        <link rel="stylesheet" href="css/style.css"> 
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head> 
+    <body> 
+        <div id="loader" class="loader"></div>
+        <header> 
+            <a href="tel:+254795218175">+254795218175</a>
+            <a href="mailto:tuinuejamii2023@gmail.com">tuinuejamii2023@gmail.com</a>.<br> 
+        </header> 
+        
+            <div class="logo">
+                <a href="index.html">
+                <img src="images/logo (2).png" alt="Logo" class="rounded-circle"/>
+                <h1 class="sitename">TUINUE JAMII YOUTH GROUP</h1>
+                <span>.</span>
+            </a>
+            </div>
+            <header class="header">
+            <button id="mobile-menu-toggle" onclick="toggleNavbar()">☰</button>
+              <div class="navbar" id="navbar">
+                <a href="index.html">Home</a>
+              
+                <div class="dropdown">
+                  <button class="dropbtn">About Us
+                    <i class="fi fi-ts-angle-small-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="WAR.html">Who are we?</a>
+                    <a href="team.html">Team</a>
+                  </div>
+                </div>
+                <a href="#news">Events</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Membership
+                      <i class="fi fi-ts-angle-small-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                      <a href="benefits.html">Membership Benefits</a>
+                      <a href="membership.html">Individual Membership</a>
+                    </div>
+                    
+             </div>
+             <button id="btn"><a href="contact.html">Contact us</a></button>
+            </div>
+        </header>
+        <div class="carousel">
+          <div class="carousel-images" id="carouselImages">
+              <div class="carousel-image">
+                  <img src="images/green-gram.jpeg" class="attachment-revolution-wide-3x size-revolution-wide-3x wp-post-image" decoding="async" loading="lazy" alt="Image 1" style="width:100%">
+                  <div class="info">
+                    <h1>Our profile</h1>
+                    <p>We are a group of young people who are passionate about environmental conservation and sustainability. <br> We believe that we can make a difference in the community by taking action and working together to protect the environment.</p>
+                    <button class="btn"><a href="WAR.html">Learn More</a></button>
+                  </div>
+              </div>
+              <div class="carousel-image">
+                  <img src="images/pexels-alejandro-barron-21404-96715.jpg" alt="Image 2" style="width:100%">
+                  <div class="info"></div>
+              </div>
+              <div class="carousel-image">
+                  <img src="images/tank.png" alt="Image 3" style="width:100%">
+                  <div class="info"></div>
+              </div>
+          </div>
+          <div class="buttons">
+              <button onclick="prevImage()">&#10094;</button>
+              <button onclick="nextImage()">&#10095;</button>
+          </div>
+      </div>
+      <footer class="footer">
+        <div class="footer-column">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="WAR.html">Who We Are</a></li>
+                <li><a href="team.html">Our Team</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Membership</h3>
+            <ul>
+                <li><a href="membership.html">Individual Membership</a></li>
+                <li><a href="benefits.html">Membership Benefits</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Events & Programmes</h3>
+            <ul>
+                <li><a href="#">All Events</a></li>
+                <li><a href="#">Upcoming Events</a></li>
+                <li><a href="#">Archived Events</a></li>
+                <li><a href="#">All Programmes</a></li>
+                <li><a href="#">Recent Programmes</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="#">Score Card</a></li>
+                <li><a href="#">Monthly Reports</a></li>
+                <li><a href="#">Annual Reports</a></li>
+                <li><a href="#">Magazines</a></li>
+                <li><a href="#">Vacancies</a></li>
+            </ul>
+        </div>
+        <div class="footer-column contact-info">
+            <h3>Contact Us</h3>
+            <p>Location: THARAKA NORTH SUB COUNTY
+              KATHANGACHINI LOCATION
+                KATHANGACHINI SUB-LOCATION
+             YOMBO VILLAGE
+                 GATUE DIVISION
+           </p>
+            <p>Email: tuinuejamii2023@gmail.com</p>
+            <p>Phone: +254 795218175</p>
+            <p>Mobile: +254 798258376</p>
+        </div>
+        <div class="footer-column follow-us">
+            <h3>Follow Us</h3>
+            <a href="https://wa.me/+254798258376">WhatsApp</a>
+        </div>
+    </footer>
+
+    <div class="footer-bottom">
+        <a href="contact.html">Contact</a> | 
+        <a href="#">FAQ</a> | 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Sitemap</a>
+        <p>© 2024 TJG</p>
+    </div>
+
+    <script src="js/script.js"></script>
+    </body> 
+    </html>
+

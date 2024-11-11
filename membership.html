@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Plans</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+    background-color: #5c740e; /* Dark greenish tone */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+header a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+.header {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between logo and navbar */
+    padding: 10px 20px; /* Add some padding */
+    background-color: #09531e; /* Background color for the header */
+}
+
+.logo img {
+    width: 150px; /* Adjust logo size */
+    height: auto; /* Maintain aspect ratio */
+}
+.rounded-circle {
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Must be equal to width for a circle */
+    border-radius: 50%; /* Creates a circular image */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+
+.sitename {
+    color: #ce1bcb;
+    font-size: 24px;
+    margin-left: 10px;
+}
+/* Navbar container */
+.navbar {
+    overflow: hidden;
+    background-color: #09531e;
+    font-family: Arial;
+  }
+  
+  /* Links inside the navbar */
+  .navbar a {
+    float: left;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding: 20px 22px;
+    text-decoration: none;
+  }
+  #btn{
+    background-color: #ce1bcb;
+    border: none;
+    border-radius: 7px;
+  }
+  #mobile-menu-toggle {
+    background-color: #004d00;
+    padding: 10px;
+    cursor: pointer;
+    width: 20px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+  /* The dropdown container */
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  /* Dropdown button */
+  .dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+  }
+  
+  /* Add a red background color to navbar links on hover */
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    opacity: 0.5;
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #a52626;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+        .membership-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 40px;
+        }
+        .membership {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 20px;
+            width: 300px;
+            text-align: center;
+            padding: 20px;
+        }
+        .membership-container:hover .membership {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .membership h2 {
+            background-color: #f49000;
+            color: white;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+            margin-top: 0;
+        }
+        .membership ul {
+            text-align: left;
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        .membership ul li {
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 24px;
+            color: orange;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .get-started-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .get-started-btn:hover {
+            background-color: #218838;
+        }
+        .footer {
+  background-color: #A3500B; /* Main footer background color */
+  color: #fff; /* White text color */
+  padding: 40px 0; /* Spacing inside the footer */
+  display: flex; /* Flexbox layout for even distribution */
+  justify-content: space-between; /* Space between the columns */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Footer Column Styling */
+.footer-column {
+  width: 25%; /* Each column takes up 25% of the width */
+  padding: 0 20px; /* Padding between columns */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+/* Column Headings */
+.footer-column h3 {
+  margin-bottom: 15px; /* Spacing below the heading */
+  font-size: 18px; /* Slightly larger heading font */
+}
+
+/* Unordered List Styling */
+.footer-column ul {
+  list-style: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+/* List Item Styling */
+.footer-column ul li {
+  margin-bottom: 10px; /* Space between list items */
+}
+
+/* Links inside the List */
+.footer-column ul li a {
+  color: #fff; /* White text color for links */
+  text-decoration: none; /* Remove default underline */
+}
+
+/* Link Hover Effect */
+.footer-column ul li a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Contact Information Box Styling */
+.contact-info, .follow-us {
+  background-color: #5C5652; /* Darker background for separation */
+  padding: 20px; /* Padding inside the box */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Contact Information Text */
+.contact-info p, .follow-us p {
+  margin: 5px 0; /* Small margin between contact details */
+  font-size: 14px;
+}
+
+/* Follow Us Icons and Links */
+.follow-us a {
+  margin-right: 10px; /* Space between social icons */
+  color: #fff; /* White color for social icons */
+  font-size: 20px; /* Larger size for emphasis */
+  text-decoration: none; /* Remove default underline */
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+  text-align: center; /* Center the text */
+  padding: 20px 0; /* Spacing inside the footer bottom */
+  background-color: #A3500B; /* Same background color as main footer */
+  font-size: 14px; /* Slightly smaller text for the footer bottom */
+}
+
+/* Footer Bottom Links */
+.footer-bottom a {
+  color: #fff; /* White text for the links */
+  margin-right: 10px; /* Space between links */
+  text-decoration: none; /* Remove default underline */
+}
+
+/* Footer Bottom Hover Effect */
+.footer-bottom a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+@media (max-width: 468px){
+  ..header {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+.navbar {
+    flex-direction: column; /* Stack navbar links */
+    gap: 10px;
+}
+.dropdown-content {
+    width: auto;
+}
+
+/* Carousel adjustments */
+.carousel {
+    height: 300px;
+}
+.carousel-image img {
+    width: 100%;
+    height: auto;
+}
+.info h1, .info p {
+    font-size: 20px;
+}
+
+/* Footer */
+.footer-column {
+    width: 100%;
+    padding: 10px;
+}
+.footer a {
+    font-size: 14px;
+}
+
+/* Button and Text Size Adjustments */
+.btn, .button {
+    padding: 8px;
+    font-size: 14px;
+}
+
+}
+@keyframes fadeInDown {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+@keyframes dropdownFadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+@keyframes slideIn {
+  from {
+      opacity: 0;
+      transform: translateX(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+@keyframes fadeInLeft {
+  from {
+      opacity: 0;
+      transform: translateX(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+@media (max-width: 768px) {
+  .header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .navbar {
+      flex-direction: column;
+      width: 100%;
+      display: none; /* Hide navbar by default */
+  }
+
+  .navbar.active {
+      display: block; /* Show navbar when active */
+      flex-direction: column; /* Change to column layout */
+  }
+
+  .dropdown {
+      width: 100%;
+  }
+
+  .dropdown-content {
+      position: relative; /* Make dropdown content flow in mobile */
+      width: 100%;
+  }
+
+  #mobile-menu-toggle {
+      display: block;
+      
+  }
+  #mobile-menu-toggle:hover + .navbar {
+    display: inline-block;
+    flex-direction: column;
+    
+    animation: fadeIn 0.5s ease-out;
+    
+}
+
+}
+
+/* Animation for dropdown */
+@keyframes dropdownFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+    </style>
+    <script>
+      function toggleNavbar() {
+        const navbar = document.getElementById("navbar");
+        navbar.classList.toggle("active");
+    }
+    </script>
+</head>
+<body>
+    <header> 
+        <a href="tel:+254795218175">+254795218175</a>
+        <a href="mailto:tuinuejamii2023@gmail.com">tuinuejamii2023@gmail.com</a>.<br> 
+    </header> 
+    
+        <div class="logo">
+            <a href="index.html">
+              <img src="images/logo (2).png" alt="Logo" class="rounded-circle"/>
+            <h1 class="sitename">TUINUE JAMII YOUTH GROUP</h1>
+            <span>.</span>
+        </a>
+        </div>
+        <header class="header">
+        <button id="mobile-menu-toggle" onclick="toggleNavbar()">☰</button>
+          <div class="navbar" id="navbar">
+            <a href="index.html">Home</a>
+            
+            <div class="dropdown">
+              <button class="dropbtn">About Us
+                <i class="fi fi-ts-angle-small-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="WAR.html">Who are we?</a>
+                <a href="team.html">Team</a>
+              </div>
+            </div>
+            <a href="#news">Events</a>
+            <div class="dropdown">
+                <button class="dropbtn">Membership
+                  <i class="fi fi-ts-angle-small-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  <a href="benefits.html">Membership Benefits</a>
+                  <a href="membership.html">Individual Membership</a>
+                </div>
+         </div>
+         <button id="btn"><a href="contact.html">Contact us</a></button>
+        </div>
+    </header>
+
+<div class="membership-container">
+    <!-- Basic Membership -->
+    <div class="membership">
+        <h2>Basic Membership</h2>
+        <ul>
+            <li>Representation, articulation, promotion and protection of farmers' rights</li>
+            <li>Participation in county lobby and policy forums</li>
+            <li>Access to subsidized inputs (fertilizer, seeds, agrochemicals)</li>
+            <li>Access to subsidized Farmer Health Insurance premiums</li>
+            <li>Access to KENAFF monthly and quarterly reports</li>
+            <li>Linkage to local markets through third-party arrangements</li>
+            <li>Participation in intra-county farmer-to-farmer exchange programs</li>
+        </ul>
+        <div class="price">Annual fee: Ksh. 1,000</div>
+        <a href="contact.html" class="get-started-btn">Get Started</a>
+    </div>
+
+
+</div>
+<footer class="footer">
+    <div class="footer-column">
+        <h3>About Us</h3>
+        <ul>
+            <li><a href="WAR.html">Who We Are</a></li>
+            <li><a href="team.html">Our Team</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Membership</h3>
+        <ul>
+            <li><a href="membership.html">Individual Membership</a></li>
+            <li><a href="benefits.html">Membership Benefits</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Events & Programmes</h3>
+        <ul>
+            <li><a href="#">All Events</a></li>
+            <li><a href="#">Upcoming Events</a></li>
+            <li><a href="#">Archived Events</a></li>
+            <li><a href="#">All Programmes</a></li>
+            <li><a href="#">Recent Programmes</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Resources</h3>
+        <ul>
+            <li><a href="#">Score Card</a></li>
+            <li><a href="#">Monthly Reports</a></li>
+            <li><a href="#">Annual Reports</a></li>
+            <li><a href="#">Magazines</a></li>
+            <li><a href="#">Vacancies</a></li>
+        </ul>
+    </div>
+    <div class="footer-column contact-info">
+        <h3>Contact Us</h3>
+        <p>Location: THARAKA NORTH SUB COUNTY
+          KATHANGACHINI LOCATION
+            KATHANGACHINI SUB-LOCATION
+         YOMBO VILLAGE
+             GATUE DIVISION
+       </p>
+        <p>Email: tuinuejamii2023@gmail.com</p>
+        <p>Phone: +254 795218175</p>
+        <p>Mobile: +254 798258376</p>
+    </div>
+    <div class="footer-column follow-us">
+        <h3>Follow Us</h3>
+        <a href="https://wa.me/+254798258376">WhatsApp</a>
+    </div>
+  </footer>
+  
+  <div class="footer-bottom">
+    <a href="contact.html">Contact</a> | 
+    <a href="#">FAQ</a> | 
+    <a href="#">Privacy Policy</a> | 
+    <a href="#">Sitemap</a>
+    <p>© 2024 TJG</p>
+  </div>
+</body>
+</html>
