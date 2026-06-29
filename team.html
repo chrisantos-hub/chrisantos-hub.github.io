@@ -1,117 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Team | Tuinue Jamii Youth Group</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f7f9f4;
+      color: #222;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: #1a5c2a;
+      color: #fff;
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+    }
+    .topbar a { color: #c8e6c9; text-decoration: none; margin: 0 8px; }
+
+    /* ── NAV ── */
+    nav {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 32px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-weight: 700; font-size: 1.1rem; color: #1a5c2a; text-decoration: none; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { text-decoration: none; color: #333; font-size: 0.95rem; }
+    .nav-links a:hover { color: #1a5c2a; }
+
+    /* ── HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, #1a5c2a 0%, #2e7d3e 60%, #4caf50 100%);
+      color: #fff;
+      text-align: center;
+      padding: 64px 24px 48px;
+    }
+    .page-hero h1 { font-size: 2.4rem; margin-bottom: 12px; letter-spacing: 1px; }
+    .page-hero p { font-size: 1.1rem; opacity: 0.9; max-width: 560px; margin: 0 auto; }
+
+    /* ── LEADERSHIP ── */
+    .section { max-width: 1100px; margin: 0 auto; padding: 56px 24px; }
+    .section-title {
+      text-align: center;
+      font-size: 1.6rem;
+      color: #1a5c2a;
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 0.97rem;
+    }
+
+    /* Leadership cards (top 3) */
+    .leadership-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+    .leader-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(26,92,42,0.10);
+      padding: 36px 28px 28px;
+      text-align: center;
+      width: 230px;
+      border-top: 5px solid #1a5c2a;
+      transition: transform 0.2s;
+    }
+    .leader-card:hover { transform: translateY(-4px); }
+    .avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: #c8e6c9;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 2rem;
+      color: #1a5c2a;
+    }
+    .leader-card h3 { font-size: 1rem; color: #1a5c2a; margin-bottom: 4px; }
+    .leader-card .role {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #4caf50;
+      margin-bottom: 10px;
+    }
+    .leader-card p { font-size: 0.87rem; color: #555; line-height: 1.5; }
+
+    /* Members grid */
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .member-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 16px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      border-left: 4px solid #4caf50;
+    }
+    .member-avatar {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #e8f5e9;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 1.5rem;
+      color: #2e7d3e;
+    }
+    .member-card h4 { font-size: 0.95rem; color: #222; margin-bottom: 3px; }
+    .member-card .member-role {
+      font-size: 0.78rem;
+      color: #1a5c2a;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── CALL TO ACTION ── */
+    .cta-band {
+      background: #1a5c2a;
+      color: #fff;
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .cta-band h2 { font-size: 1.7rem; margin-bottom: 12px; }
+    .cta-band p { opacity: 0.9; margin-bottom: 24px; }
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: #1a5c2a;
+      font-weight: 700;
+      padding: 13px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: #c8e6c9; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: #aaa;
+      padding: 40px 32px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 28px;
+    }
+    footer h4 { color: #fff; margin-bottom: 12px; font-size: 0.95rem; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 6px; }
+    footer ul li a { color: #aaa; text-decoration: none; font-size: 0.87rem; }
+    footer ul li a:hover { color: #4caf50; }
+    .footer-bottom {
+      text-align: center;
+      background: #111;
+      color: #555;
+      font-size: 0.8rem;
+      padding: 12px;
+      border-top: 1px solid #222;
+    }
+
+    @media (max-width: 600px) {
+      .page-hero h1 { font-size: 1.7rem; }
+      nav { padding: 12px 16px; }
+    }
+  </style>
 </head>
 <body>
-  <header> 
-    <a href="tel:+254795218175">+254795218175</a>
-    <a href="mailto:tuinuejamii2023@gmail.com">tuinuejamii2023@gmail.com</a>.<br> 
-</header> 
 
-    <div class="logo">
-        <a href="index.html">
-          <img src="images/logo (2).png" alt="Logo" class="rounded-circle"/>
-        <h1 class="sitename">TUINUE JAMII YOUTH GROUP</h1>
-        <span>.</span>
-    </a>
-    </div>
-    <header class="header">
-    <button id="mobile-menu-toggle" onclick="toggleNavbar()">☰</button>
-      <div class="navbar" id="navbar">
-        <a href="index.html">Home</a>
-        
-        <div class="dropdown">
-          <button class="dropbtn">About Us
-            <i class="fi fi-ts-angle-small-down"></i>
-          </button>
-          <div class="dropdown-content">
-            <a href="WAR.html">Who are we?</a>
-            <a href="team.html">Team</a>
-          </div>
-        </div>
-        <a href="#news">Events</a>
-        <div class="dropdown">
-            <button class="dropbtn">Membership
-              <i class="fi fi-ts-angle-small-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="benefits.html">Membership Benefits</a>
-              <a href="membership.html">Individual Membership</a>
-            </div>
-     </div>
-     <button id="btn"><a href="contact.html">Contact us</a></button>
-    </div>
-</header>
-<main>
+<!-- TOP BAR -->
+<div class="topbar">
+  <a href="tel:+254746270832">📞 +254 746270832</a> &nbsp;|&nbsp;
+  <a href="mailto:tuinuejamii2023@gmail.com">✉ tuinuejamii2023@gmail.com</a>
+</div>
 
-</main>
-<footer class="footer">
-  <div class="footer-column">
-      <h3>About Us</h3>
-      <ul>
-          <li><a href="WAR.html">Who We Are</a></li>
-          <li><a href="team.html">Our Team</a></li>
-      </ul>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">🌿 TUINUE JAMII YOUTH GROUP</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="WAR.html">About Us</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="membership.html">Membership</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <h1>Meet Our Team</h1>
+  <p>Passionate young people from Kathangachini driving change for our environment and community.</p>
+</div>
+
+<!-- LEADERSHIP -->
+<div class="section">
+  <h2 class="section-title">Leadership</h2>
+  <p class="section-sub">Our elected officials who guide the group's vision and day-to-day operations.</p>
+
+  <div class="leadership-grid">
+
+    <div class="leader-card">
+      <div class="avatar">👤</div>
+      <h3>[Chairperson Name]</h3>
+      <div class="role">Chairperson</div>
+      <p>Leads the group's strategic direction and represents TJYG in community forums and partnerships.</p>
+    </div>
+
+    <div class="leader-card">
+      <div class="avatar">👤</div>
+      <h3>[Vice Chairperson Name]</h3>
+      <div class="role">Vice Chairperson</div>
+      <p>Supports the Chairperson and coordinates programmes across the group's focus areas.</p>
+    </div>
+
+    <div class="leader-card">
+      <div class="avatar">👤</div>
+      <h3>[Treasurer Name]</h3>
+      <div class="role">Treasurer</div>
+      <p>Manages the group's finances, prepares financial reports, and ensures accountability of funds.</p>
+    </div>
+
+    <div class="leader-card">
+      <div class="avatar">👤</div>
+      <h3>[Secretary Name]</h3>
+      <div class="role">Secretary</div>
+      <p>Maintains records, correspondence, and minutes for all group meetings and activities.</p>
+    </div>
+
+    <div class="leader-card">
+      <div class="avatar">👤</div>
+      <h3>[Vice Secretary Name]</h3>
+      <div class="role">Vice Secretary</div>
+      <p>Assists the Secretary and ensures timely communication within and outside the group.</p>
+    </div>
+
+    <div class="leader-card">
+      <div class="avatar">👤</div>
+      <h3>[Discipline Mistress Name]</h3>
+      <div class="role">Discipline Mistress</div>
+      <p>Upholds the group's code of conduct and fosters a respectful, inclusive environment for all members.</p>
+    </div>
+
   </div>
-  <div class="footer-column">
-      <h3>Membership</h3>
-      <ul>
-          <li><a href="membership.html">Individual Membership</a></li>
-          <li><a href="benefits.html">Membership Benefits</a></li>
-      </ul>
+
+  <!-- MEMBERS -->
+  <h2 class="section-title">Members</h2>
+  <p class="section-sub">The heart of TJYG — committed individuals making a difference on the ground.</p>
+
+  <div class="members-grid">
+    <div class="member-card">
+      <div class="member-avatar">🌿</div>
+      <h4>[Member Name]</h4>
+      <div class="member-role">Member</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar">🌿</div>
+      <h4>[Member Name]</h4>
+      <div class="member-role">Member</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar">🌿</div>
+      <h4>[Member Name]</h4>
+      <div class="member-role">Member</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar">🌿</div>
+      <h4>[Member Name]</h4>
+      <div class="member-role">Member</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar">🌿</div>
+      <h4>[Member Name]</h4>
+      <div class="member-role">Member</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar">🌿</div>
+      <h4>[Member Name]</h4>
+      <div class="member-role">Member</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar">🌿</div>
+      <h4>[Member Name]</h4>
+      <div class="member-role">Member</div>
+    </div>
   </div>
-  <div class="footer-column">
-      <h3>Events & Programmes</h3>
-      <ul>
-          <li><a href="#">All Events</a></li>
-          <li><a href="#">Upcoming Events</a></li>
-          <li><a href="#">Archived Events</a></li>
-          <li><a href="#">All Programmes</a></li>
-          <li><a href="#">Recent Programmes</a></li>
-      </ul>
+</div>
+
+<!-- JOIN CTA -->
+<div class="cta-band">
+  <h2>Want to Join Our Team?</h2>
+  <p>We're always looking for passionate young people who care about their community and the environment.</p>
+  <a class="cta-btn" href="membership.html">Become a Member</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <h4>About Us</h4>
+    <ul>
+      <li><a href="WAR.html">Who We Are</a></li>
+      <li><a href="team.html">Our Team</a></li>
+    </ul>
   </div>
-  <div class="footer-column">
-      <h3>Resources</h3>
-      <ul>
-          <li><a href="#">Score Card</a></li>
-          <li><a href="#">Monthly Reports</a></li>
-          <li><a href="#">Annual Reports</a></li>
-          <li><a href="#">Magazines</a></li>
-          <li><a href="#">Vacancies</a></li>
-      </ul>
+  <div>
+    <h4>Membership</h4>
+    <ul>
+      <li><a href="membership.html">Individual Membership</a></li>
+      <li><a href="benefits.html">Membership Benefits</a></li>
+    </ul>
   </div>
-  <div class="footer-column contact-info">
-      <h3>Contact Us</h3>
-      <p>Location: THARAKA NORTH SUB COUNTY
-        KATHANGACHINI LOCATION
-          KATHANGACHINI SUB-LOCATION
-       YOMBO VILLAGE
-           GATUE DIVISION
-     </p>
-      <p>Email: tuinuejamii2023@gmail.com</p>
-      <p>Phone: +254 795218175</p>
-      <p>Mobile: +254 798258376</p>
+  <div>
+    <h4>Events</h4>
+    <ul>
+      <li><a href="events.html">All Events</a></li>
+      <li><a href="events.html">Upcoming Events</a></li>
+    </ul>
   </div>
-  <div class="footer-column follow-us">
-      <h3>Follow Us</h3>
-      <a href="https://wa.me/+254798258376">WhatsApp</a>
+  <div>
+    <h4>Contact Us</h4>
+    <p style="font-size:0.87rem; line-height:1.7;">
+      Yombo Village, Kathangachini<br>
+      Tharaka North Sub-County<br>
+      📧 tuinuejamii2023@gmail.com<br>
+      📞 +254 746270832
+    </p>
+  </div>
+  <div>
+    <h4>Follow Us</h4>
+    <ul>
+      <li><a href="https://wa.me/+254798258376">💬 WhatsApp</a></li>
+    </ul>
   </div>
 </footer>
-
 <div class="footer-bottom">
-  <a href="contact.html">Contact</a> | 
-  <a href="#">FAQ</a> | 
-  <a href="#">Privacy Policy</a> | 
-  <a href="#">Sitemap</a>
-  <p>© 2024 TJG</p>
+  <a href="contact.html" style="color:#aaa;">Contact</a> |
+  <a href="#" style="color:#aaa;">Privacy Policy</a> |
+  <a href="#" style="color:#aaa;">Sitemap</a><br><br>
+  © 2026 Tuinue Jamii Youth Group (TJYG). All rights reserved.
 </div>
-<script src="js/script.js"></script>
+
 </body>
 </html>
