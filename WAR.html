@@ -1,168 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about Tuinue Jamii Youth Group — our mission, vision, core values and the work we do in Kathangachini, Tharaka North." />
+  <title>About Us | Tuinue Jamii Youth Group</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f7f9f4; color: #222; }
+    a { text-decoration: none; }
+
+    .topbar { background: #1a5c2a; color: #fff; text-align: center; padding: 8px 16px; font-size: 0.85rem; }
+    .topbar a { color: #c8e6c9; margin: 0 8px; }
+    .topbar a:hover { color: #fff; }
+
+    nav {
+      background: #fff; display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      position: sticky; top: 0; z-index: 200;
+    }
+    .nav-logo { font-weight: 800; font-size: 1.05rem; color: #1a5c2a; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: #333; font-size: 0.92rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #1a5c2a; }
+    .nav-links .nav-cta { background: #1a5c2a; color: #fff !important; padding: 8px 20px; border-radius: 6px; font-weight: 600; }
+    .nav-links .nav-cta:hover { background: #2e7d3e; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #1a5c2a; border-radius: 2px; }
+    .mobile-menu { display: none; flex-direction: column; background: #fff; border-top: 1px solid #eee; padding: 16px 24px; gap: 14px; }
+    .mobile-menu a { color: #333; font-size: 0.97rem; font-weight: 500; }
+    .mobile-menu a:hover { color: #1a5c2a; }
+    .mobile-menu.open { display: flex; }
+
+    .page-hero {
+      background: linear-gradient(135deg, #1a5c2a 0%, #2e7d3e 60%, #4caf50 100%);
+      color: #fff; text-align: center; padding: 72px 24px 56px;
+    }
+    .page-hero .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #a5d6a7; margin-bottom: 12px; }
+    .page-hero h1 { font-size: 2.6rem; margin-bottom: 14px; font-weight: 800; }
+    .page-hero p { font-size: 1.05rem; opacity: 0.9; max-width: 580px; margin: 0 auto; line-height: 1.65; }
+
+    .mv-section { max-width: 1000px; margin: 0 auto; padding: 72px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .mv-card { background: #fff; border-radius: 14px; padding: 36px 32px; box-shadow: 0 4px 18px rgba(0,0,0,0.08); }
+    .mv-card .icon { font-size: 2.4rem; margin-bottom: 16px; }
+    .mv-card h2 { font-size: 1.2rem; color: #1a5c2a; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+    .mv-card p { font-size: 0.93rem; color: #555; line-height: 1.75; }
+    .mv-card.mission { border-top: 5px solid #1a5c2a; }
+    .mv-card.vision { border-top: 5px solid #4caf50; }
+
+    .values-section { background: #eef4eb; padding: 72px 24px; }
+    .section-header { text-align: center; max-width: 600px; margin: 0 auto 48px; }
+    .section-header .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #4caf50; margin-bottom: 10px; }
+    .section-header h2 { font-size: 2rem; color: #1a5c2a; margin-bottom: 10px; }
+    .section-header p { font-size: 0.95rem; color: #666; line-height: 1.65; }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
+    .value-card { background: #fff; border-radius: 12px; padding: 28px 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.07); border-top: 4px solid #4caf50; }
+    .value-card .v-icon { font-size: 2rem; margin-bottom: 12px; }
+    .value-card h4 { font-size: 0.97rem; color: #1a5c2a; margin-bottom: 8px; font-weight: 700; }
+    .value-card p { font-size: 0.84rem; color: #666; line-height: 1.55; }
+
+    .stats-band { background: #1a5c2a; display: flex; flex-wrap: wrap; justify-content: center; }
+    .stat-item { color: #fff; text-align: center; padding: 28px 48px; border-right: 1px solid rgba(255,255,255,0.15); }
+    .stat-item:last-child { border-right: none; }
+    .stat-item .num { font-size: 2.4rem; font-weight: 800; color: #a5d6a7; }
+    .stat-item .label { font-size: 0.8rem; opacity: 0.85; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+
+    .focus-section { max-width: 1000px; margin: 0 auto; padding: 72px 24px; }
+    .focus-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 22px; margin-top: 40px; }
+    .focus-card { background: #fff; border-radius: 12px; padding: 28px 22px; box-shadow: 0 3px 12px rgba(0,0,0,0.07); }
+    .focus-card .f-icon { font-size: 2rem; margin-bottom: 10px; }
+    .focus-card h4 { font-size: 1rem; color: #1a5c2a; font-weight: 700; margin-bottom: 8px; }
+    .focus-card p { font-size: 0.86rem; color: #555; line-height: 1.6; }
+
+    .cta-band { background: linear-gradient(135deg, #2e7d3e, #1a5c2a); color: #fff; text-align: center; padding: 56px 24px; }
+    .cta-band h2 { font-size: 1.8rem; margin-bottom: 12px; }
+    .cta-band p { opacity: 0.9; margin-bottom: 28px; font-size: 1rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn { display: inline-block; background: #fff; color: #1a5c2a; font-weight: 700; padding: 13px 32px; border-radius: 6px; font-size: 0.97rem; transition: background 0.2s; }
+    .cta-btn:hover { background: #c8e6c9; }
+    .cta-btn.outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.7); }
+    .cta-btn.outline:hover { background: rgba(255,255,255,0.15); }
+
+    .footer-main { background: #111; color: #aaa; padding: 48px 40px 28px; display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 32px; }
+    .footer-brand h3 { color: #fff; font-size: 1.05rem; margin-bottom: 10px; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.7; margin-bottom: 16px; }
+    .footer-wa { display: inline-flex; align-items: center; gap: 8px; background: #25d366; color: #fff; padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; }
+    .footer-col h4 { color: #fff; font-size: 0.9rem; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: #aaa; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: #4caf50; }
+    .footer-bottom { background: #0a0a0a; color: #555; text-align: center; font-size: 0.8rem; padding: 14px 24px; border-top: 1px solid #1e1e1e; display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom a { color: #777; }
+    .footer-bottom a:hover { color: #4caf50; }
+
+    @media (max-width: 768px) {
+      .mv-section { grid-template-columns: 1fr; }
+      .footer-main { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .page-hero h1 { font-size: 1.9rem; }
+    }
+    @media (max-width: 560px) {
+      nav { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-main { grid-template-columns: 1fr; padding: 36px 24px; }
+      .stat-item { padding: 22px 28px; }
+    }
+  </style>
 </head>
 <body>
-  <header> 
-    <a href="tel:+254795218175">+254795218175</a>
-    <a href="mailto:tuinuejamii2023@gmail.com">tuinuejamii2023@gmail.com</a>.<br> 
-</header> 
 
-    <div class="logo">
-        <a href="index.html">
-            <img src="images/logo (2).png" alt="Logo" class="rounded-circle"/>
-        <h1 class="sitename">TUINUE JAMII YOUTH GROUP</h1>
-        <span>.</span>
-    </a>
-    </div>
-    <header class="header">
-    <button id="mobile-menu-toggle" onclick="toggleNavbar()">☰</button>
-      <div class="navbar" id="navbar">
-        <a href="index.html">Home</a>
-        
-        <div class="dropdown">
-          <button class="dropbtn">About Us
-            <i class="fi fi-ts-angle-small-down"></i>
-          </button>
-          <div class="dropdown-content">
-            <a href="WAR.html">Who are we?</a>
-            <a href="team.html">Team</a>
-          </div>
-        </div>
-        <a href="#news">Events</a>
-        <div class="dropdown">
-            <button class="dropbtn">Membership
-              <i class="fi fi-ts-angle-small-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="benefits.html">Membership Benefits</a>
-              <a href="membership.html">Individual Membership</a>
-            </div>
-     </div>
-     <button id="btn"><a href="contact.html">Contact us</a></button>
-    </div>
-</header>
-<h1>ABOUT US: TUINUE JAMII YOUTH GROUP (TJYG)</h1>
-
-<p></p>
-<div style="background: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
-  <h1 style="text-align: center;">Our Mission & Vision</h1><br><br>
-
-            
-  <h2 style="text-align: center;">Mission</h2>
-  <p>To mobilize the communities, organizations and individuals to share and participate in all aspects of education, health and poverty reduction in the region</p><br><br>
-
-  <h2 style="text-align: center;" color="purple">Vision</h2>
-  <p>To be the leading association in empowering living standards in KATHANGACHINI and its catchment</p><br><br><br><br>
-
-  <h2 style="text-align: center;">Core Values</h2>
-        <ul style="list-style-type: none; padding: 0; text-align: center;">
-            <li style="margin: 10px 0; position: relative; padding-left: 20px;">
-                <span style="position: absolute; left: 0; color: orange; font-size: 20px;">•</span>
-                I.	Integrity
-            </li>
-            <li style="margin: 10px 0; position: relative; padding-left: 20px;">
-                <span style="position: absolute; left: 0; color: orange; font-size: 20px;">•</span>
-                II.	Human dignity
-            </li>
-            <li style="margin: 10px 0; position: relative; padding-left: 20px;">
-                <span style="position: absolute; left: 0; color: orange; font-size: 30px;">•</span>
-                III.	Equality
-            </li>
-            <li style="margin: 10px 0; position: relative; padding-left: 20px;">
-                <span style="position: absolute; left: 0; color: orange; font-size: 20px;">•</span>
-                IV.	Participation
-            </li>
-            <li style="margin: 10px 0; position: relative; padding-left: 20px;">
-                <span style="position: absolute; left: 0; color: orange; font-size: 20px;">•</span>
-                <Var></Var>.	Dedication 
-            </li>
-        </ul>
+<div class="topbar">
+  <a href="tel:+254746270832">📞 +254 746 270832</a>
+  &nbsp;|&nbsp;
+  <a href="mailto:tuinuejamii2023@gmail.com">✉ tuinuejamii2023@gmail.com</a>
 </div>
-<div class="container">
-  <div class="card">
-      <h3>10</h3>
-      <p>Members in 2024</p>
-      <a href="#" class="button">Read More</a>
+
+<nav>
+  <a class="nav-logo" href="/">🌿 TUINUE JAMII YOUTH GROUP</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/WAR.html">About Us</a></li>
+    <li><a href="/team.html">Our Team</a></li>
+    <li><a href="/events.html">Events</a></li>
+    <li><a href="/membership.html">Membership</a></li>
+    <li><a href="/contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/WAR.html">About Us</a>
+  <a href="/team.html">Our Team</a>
+  <a href="/events.html">Events</a>
+  <a href="/membership.html">Membership</a>
+  <a href="/contact.html">Contact Us</a>
+</div>
+
+<div class="page-hero" id="mission">
+  <div class="eyebrow">About Us</div>
+  <h1>Tuinue Jamii Youth Group</h1>
+  <p>A community of young people from Kathangachini working together for a cleaner, healthier, and more prosperous Tharaka North.</p>
+</div>
+
+<div class="mv-section">
+  <div class="mv-card mission">
+    <div class="icon">🎯</div>
+    <h2>Our Mission</h2>
+    <p>To mobilize communities, organizations, and individuals to share and participate in all aspects of environmental conservation, education, health, and poverty reduction in the Kathangachini region and beyond.</p>
   </div>
-  <div class="card">
-      <h3>2</h3>
-      <p>Projects in 2024</p>
-      <a href="#" class="button">Read More</a>
-  </div>
-  <div class="card">
-      <h3>5</h3>
-      <p>Events in 2024</p>
-      <a href="#" class="button">Read More</a>
+  <div class="mv-card vision">
+    <div class="icon">🌟</div>
+    <h2>Our Vision</h2>
+    <p>To be the leading youth association empowering and uplifting living standards in Kathangachini and its catchment area — building a community where every young person has the opportunity and support to thrive.</p>
   </div>
 </div>
 
-<footer class="footer">
-  <div class="footer-column">
-      <h3>About Us</h3>
-      <ul>
-          <li><a href="WAR.html">Who We Are</a></li>
-          <li><a href="team.html">Our Team</a></li>
-      </ul>
+<div class="values-section">
+  <div class="section-header">
+    <div class="eyebrow">What We Stand For</div>
+    <h2>Our Core Values</h2>
+    <p>Every decision we make and every project we run is guided by these five principles.</p>
   </div>
-  <div class="footer-column">
-      <h3>Membership</h3>
-      <ul>
-          <li><a href="membership.html">Individual Membership</a></li>
-          <li><a href="benefits.html">Membership Benefits</a></li>
-      </ul>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="v-icon">⚖️</div>
+      <h4>Integrity</h4>
+      <p>We are honest, transparent, and accountable in all our actions — to our members, partners, and community.</p>
+    </div>
+    <div class="value-card">
+      <div class="v-icon">🤲</div>
+      <h4>Human Dignity</h4>
+      <p>We respect and uphold the worth and dignity of every person, regardless of background or circumstance.</p>
+    </div>
+    <div class="value-card">
+      <div class="v-icon">⚡</div>
+      <h4>Equality</h4>
+      <p>We believe in fair and equal participation for all members, creating space for every voice to be heard.</p>
+    </div>
+    <div class="value-card">
+      <div class="v-icon">🤝</div>
+      <h4>Participation</h4>
+      <p>We are stronger together. Community involvement is at the heart of everything we plan and deliver.</p>
+    </div>
+    <div class="value-card">
+      <div class="v-icon">🔥</div>
+      <h4>Dedication</h4>
+      <p>We are committed to seeing our projects through — showing up consistently for our community and environment.</p>
+    </div>
   </div>
-  <div class="footer-column">
-      <h3>Events & Programmes</h3>
-      <ul>
-          <li><a href="#">All Events</a></li>
-          <li><a href="#">Upcoming Events</a></li>
-          <li><a href="#">Archived Events</a></li>
-          <li><a href="#">All Programmes</a></li>
-          <li><a href="#">Recent Programmes</a></li>
-      </ul>
+</div>
+
+<div class="stats-band">
+  <div class="stat-item"><div class="num">2023</div><div class="label">Year Founded</div></div>
+  <div class="stat-item"><div class="num">13</div><div class="label">Active Members</div></div>
+  <div class="stat-item"><div class="num">5+</div><div class="label">Events Held</div></div>
+  <div class="stat-item"><div class="num">200+</div><div class="label">Trees Planted</div></div>
+</div>
+
+<div class="focus-section">
+  <div class="section-header">
+    <div class="eyebrow">What We Do</div>
+    <h2>Our Focus Areas</h2>
+    <p>TJYG works across four interconnected areas to create lasting positive change in Kathangachini.</p>
   </div>
-  <div class="footer-column">
-      <h3>Resources</h3>
-      <ul>
-          <li><a href="#">Score Card</a></li>
-          <li><a href="#">Monthly Reports</a></li>
-          <li><a href="#">Annual Reports</a></li>
-          <li><a href="#">Magazines</a></li>
-          <li><a href="#">Vacancies</a></li>
-      </ul>
+  <div class="focus-grid">
+    <div class="focus-card"><div class="f-icon">🌳</div><h4>Environmental Conservation</h4><p>Tree planting, river clean-ups, and protecting water catchment areas across Tharaka North Sub-County.</p></div>
+    <div class="focus-card"><div class="f-icon">🌾</div><h4>Sustainable Agriculture</h4><p>Training farmers in composting, rainwater harvesting, and drought-resistant crop varieties suited to our region.</p></div>
+    <div class="focus-card"><div class="f-icon">🏥</div><h4>Community Health</h4><p>Raising health awareness and linking community members to health services and programmes in Tharaka North.</p></div>
+    <div class="focus-card"><div class="f-icon">📉</div><h4>Poverty Reduction</h4><p>Empowering households through skills training, financial literacy, and linkage to livelihood opportunities.</p></div>
   </div>
-  <div class="footer-column contact-info">
-      <h3>Contact Us</h3>
-      <p>Location: THARAKA NORTH SUB COUNTY
-        KATHANGACHINI LOCATION
-          KATHANGACHINI SUB-LOCATION
-       YOMBO VILLAGE
-           GATUE DIVISION
-     </p>
-      <p>Email: tuinuejamii2023@gmail.com</p>
-      <p>Phone: +254 795218175</p>
-      <p>Mobile: +254 798258376</p>
+</div>
+
+<div class="cta-band">
+  <h2>Be Part of the Change</h2>
+  <p>Whether you want to join TJYG, volunteer at an event, or partner with us — we'd love to have you on board.</p>
+  <div class="cta-btns">
+    <a class="cta-btn" href="/membership.html">Join TJYG</a>
+    <a class="cta-btn outline" href="/contact.html">Get in Touch</a>
+    <a class="cta-btn outline" href="/team.html">Meet the Team</a>
   </div>
-  <div class="footer-column follow-us">
-      <h3>Follow Us</h3>
-      <a href="https://wa.me/+254798258376">WhatsApp</a>
+</div>
+
+<footer class="footer-main">
+  <div class="footer-brand">
+    <h3>🌿 Tuinue Jamii Youth Group</h3>
+    <p>A youth-led group dedicated to environmental conservation and community development in Kathangachini, Tharaka North Sub-County, Kenya. Founded 2023.</p>
+    <a class="footer-wa" href="https://wa.me/+254798258376">💬 Chat on WhatsApp</a>
+  </div>
+  <div class="footer-col">
+    <h4>About Us</h4>
+    <ul>
+      <li><a href="/WAR.html">Who We Are</a></li>
+      <li><a href="/team.html">Our Team</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Get Involved</h4>
+    <ul>
+      <li><a href="/events.html">Events</a></li>
+      <li><a href="/membership.html">Join TJYG</a></li>
+      <li><a href="/contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="mailto:tuinuejamii2023@gmail.com">tuinuejamii2023@gmail.com</a></li>
+      <li><a href="tel:+254798258376">+254 798 258376</a></li>
+    </ul>
   </div>
 </footer>
-
 <div class="footer-bottom">
-  <a href="contact.html">Contact</a> | 
-  <a href="#">FAQ</a> | 
-  <a href="#">Privacy Policy</a> | 
-  <a href="#">Sitemap</a>
-  <p>© 2024 TJG</p>
+  <span>© 2026 Tuinue Jamii Youth Group (TJYG). All rights reserved.</span>
+  <span>
+    <a href="/">Home</a> &nbsp;|&nbsp;
+    <a href="/WAR.html">About</a> &nbsp;|&nbsp;
+    <a href="/events.html">Events</a> &nbsp;|&nbsp;
+    <a href="/membership.html">Membership</a> &nbsp;|&nbsp;
+    <a href="/contact.html">Contact</a>
+  </span>
 </div>
-<script src="js/script.js"></script>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+</script>
 </body>
 </html>
