@@ -1,49 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Tuinue Jamii Youth Group — reach us by phone, email, WhatsApp or visit us in Yombo Village, Kathangachini." />
+  <title>Contact Us | Tuinue Jamii Youth Group</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f7f9f4; color: #222; }
+    a { text-decoration: none; }
+
+    .topbar { background: #1a5c2a; color: #fff; text-align: center; padding: 8px 16px; font-size: 0.85rem; }
+    .topbar a { color: #c8e6c9; margin: 0 8px; }
+    .topbar a:hover { color: #fff; }
+
+    nav {
+      background: #fff; display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      position: sticky; top: 0; z-index: 200;
+    }
+    .nav-logo { font-weight: 800; font-size: 1.05rem; color: #1a5c2a; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: #333; font-size: 0.92rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #1a5c2a; }
+    .nav-links .nav-cta { background: #1a5c2a; color: #fff !important; padding: 8px 20px; border-radius: 6px; font-weight: 600; }
+    .nav-links .nav-cta:hover { background: #2e7d3e; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #1a5c2a; border-radius: 2px; }
+    .mobile-menu { display: none; flex-direction: column; background: #fff; border-top: 1px solid #eee; padding: 16px 24px; gap: 14px; }
+    .mobile-menu a { color: #333; font-size: 0.97rem; font-weight: 500; }
+    .mobile-menu a:hover { color: #1a5c2a; }
+    .mobile-menu.open { display: flex; }
+
+    .page-hero {
+      background: linear-gradient(135deg, #1a5c2a 0%, #2e7d3e 60%, #4caf50 100%);
+      color: #fff; text-align: center; padding: 72px 24px 56px;
+    }
+    .page-hero .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #a5d6a7; margin-bottom: 12px; }
+    .page-hero h1 { font-size: 2.6rem; margin-bottom: 14px; font-weight: 800; }
+    .page-hero p { font-size: 1.05rem; opacity: 0.9; max-width: 520px; margin: 0 auto; line-height: 1.65; }
+
+    /* ── CONTACT LAYOUT ── */
+    .contact-section {
+      max-width: 1100px; margin: 0 auto;
+      padding: 72px 24px;
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: start;
+    }
+
+    /* LEFT — contact details */
+    .contact-details h2 { font-size: 1.5rem; color: #1a5c2a; margin-bottom: 8px; }
+    .contact-details p { font-size: 0.93rem; color: #555; line-height: 1.7; margin-bottom: 32px; }
+
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      background: #fff; border-radius: 12px;
+      padding: 20px 20px; margin-bottom: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      border-left: 4px solid #4caf50;
+    }
+    .contact-item .c-icon { font-size: 1.6rem; min-width: 36px; text-align: center; }
+    .contact-item h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #4caf50; font-weight: 700; margin-bottom: 4px; }
+    .contact-item p, .contact-item a { font-size: 0.92rem; color: #333; line-height: 1.6; }
+    .contact-item a:hover { color: #1a5c2a; }
+
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25d366; color: #fff;
+      padding: 13px 28px; border-radius: 8px;
+      font-weight: 700; font-size: 0.97rem;
+      margin-top: 8px; transition: background 0.2s;
+    }
+    .wa-btn:hover { background: #1ebe57; }
+
+    /* RIGHT — contact form */
+    .contact-form-wrap {
+      background: #fff; border-radius: 16px;
+      padding: 40px 36px;
+      box-shadow: 0 6px 28px rgba(26,92,42,0.10);
+    }
+    .contact-form-wrap h2 { font-size: 1.4rem; color: #1a5c2a; margin-bottom: 6px; }
+    .contact-form-wrap p { font-size: 0.88rem; color: #777; margin-bottom: 28px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label { font-size: 0.83rem; font-weight: 600; color: #444; text-transform: uppercase; letter-spacing: 0.5px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 11px 14px;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.93rem;
+      font-family: inherit;
+      color: #222;
+      transition: border-color 0.2s;
+      outline: none;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: #4caf50; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .submit-btn {
+      display: block; width: 100%;
+      background: #1a5c2a; color: #fff;
+      padding: 14px; border: none;
+      border-radius: 8px; font-size: 1rem;
+      font-weight: 700; cursor: pointer;
+      transition: background 0.2s; font-family: inherit;
+    }
+    .submit-btn:hover { background: #2e7d3e; }
+
+    .form-note { font-size: 0.78rem; color: #999; text-align: center; margin-top: 12px; }
+
+    /* success message */
+    .success-msg {
+      display: none; background: #e8f5e9; border: 1.5px solid #4caf50;
+      border-radius: 8px; padding: 16px 20px; margin-bottom: 20px;
+      color: #1a5c2a; font-size: 0.93rem; font-weight: 600;
+    }
+    .success-msg.show { display: block; }
+
+    /* ── QUICK LINKS ── */
+    .quick-links { background: #eef4eb; padding: 56px 24px; text-align: center; }
+    .quick-links h2 { font-size: 1.5rem; color: #1a5c2a; margin-bottom: 8px; }
+    .quick-links p { color: #666; font-size: 0.93rem; margin-bottom: 32px; }
+    .ql-grid { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+    .ql-card {
+      background: #fff; border-radius: 10px;
+      padding: 22px 28px; text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      min-width: 160px; transition: transform 0.2s;
+    }
+    .ql-card:hover { transform: translateY(-3px); }
+    .ql-card .ql-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .ql-card span { display: block; font-size: 0.88rem; font-weight: 600; color: #1a5c2a; }
+
+    /* ── FOOTER ── */
+    .footer-main { background: #111; color: #aaa; padding: 48px 40px 28px; display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 32px; }
+    .footer-brand h3 { color: #fff; font-size: 1.05rem; margin-bottom: 10px; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.7; margin-bottom: 16px; }
+    .footer-wa-sm { display: inline-flex; align-items: center; gap: 8px; background: #25d366; color: #fff; padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; }
+    .footer-col h4 { color: #fff; font-size: 0.9rem; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: #aaa; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: #4caf50; }
+    .footer-bottom { background: #0a0a0a; color: #555; text-align: center; font-size: 0.8rem; padding: 14px 24px; border-top: 1px solid #1e1e1e; display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom a { color: #777; }
+    .footer-bottom a:hover { color: #4caf50; }
+
+    @media (max-width: 820px) {
+      .contact-section { grid-template-columns: 1fr; }
+      .footer-main { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 560px) {
+      nav { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form-wrap { padding: 28px 20px; }
+      .page-hero h1 { font-size: 1.9rem; }
+      .footer-main { grid-template-columns: 1fr; padding: 36px 24px; }
+    }
+  </style>
 </head>
 <body>
-    <section class="contact-section">
-        <h1>Contact Us</h1>
-        
-        <div class="contact-details">
-            <h2>Contact Details</h2>
-            <p>Do you have any enquiries? Please contact us via our contact details below or send us a message using the form below.</p>
-            <p>Phone: <a href="tel:+254746270832" class="highlight">+254746270832</a></p>
-            <p>Email: <a href="mailto:tuinuejamii2023@gmail.com" class="highlight">tuinuejamii2023@gmail.com</a></p>
-        </div>
-        
-        <div class="contact-form">
-            <h2>Send us a message</h2>
-            <form action="submit.php" method="post">
-                <label for="email">Email address*</label>
-                <input type="email" id="email" name="email" required>
 
-                <label for="name">Full name*</label>
-                <input type="text" id="name" name="name" required>
+<div class="topbar">
+  <a href="tel:+2547746270832">📞 +254 746270832</a>
+  &nbsp;|&nbsp;
+  <a href="mailto:tuinuejamii2023@gmail.com">✉ tuinuejamii2023@gmail.com</a>
+</div>
 
-                <label for="phone">Phone number</label>
-                <input type="tel" id="phone" name="phone">
+<nav>
+  <a class="nav-logo" href="/">🌿 TUINUE JAMII YOUTH GROUP</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/WAR.html">About Us</a></li>
+    <li><a href="/team.html">Our Team</a></li>
+    <li><a href="/events.html">Events</a></li>
+    <li><a href="/membership.html">Membership</a></li>
+    <li><a href="/contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/WAR.html">About Us</a>
+  <a href="/team.html">Our Team</a>
+  <a href="/events.html">Events</a>
+  <a href="/membership.html">Membership</a>
+  <a href="/contact.html">Contact Us</a>
+</div>
 
-                <label for="message">Your message*</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+<div class="page-hero">
+  <div class="eyebrow">Get in Touch</div>
+  <h1>Contact Us</h1>
+  <p>Have a question, want to join, or interested in partnering with TJYG? We'd love to hear from you.</p>
+</div>
 
-                <button type="submit" class="send-btn">Send Message</button>
-            </form>
-        </div>
+<!-- MAIN CONTACT SECTION -->
+<div class="contact-section">
 
-        <div class="location">
-            <h2>Our Location</h2>
-            <p>THARAKA NORTH SUB COUNTY</p>
-            <p>KATHANGACHINI LOCATION
-                KATHANGACHINI SUB-LOCATION
-             YOMBO VILLAGE
-                 GATUE DIVISION</p>
-        </div>
-    </section>
+  <!-- LEFT: Details -->
+  <div class="contact-details">
+    <h2>Reach Us Directly</h2>
+    <p>We're based in Yombo Village, Kathangachini. You can contact us by phone, WhatsApp, or email — we typically respond within 24 hours.</p>
+
+    <div class="contact-item">
+      <div class="c-icon">📞</div>
+      <div>
+        <h4>Phone</h4>
+        <a href="tel:+254795218175">+254 795 218175</a><br>
+        <a href="tel:+254798258376">+254 798 258376</a>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="c-icon">✉️</div>
+      <div>
+        <h4>Email</h4>
+        <a href="mailto:tuinuejamii2023@gmail.com">tuinuejamii2023@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="c-icon">📍</div>
+      <div>
+        <h4>Location</h4>
+        <p>Yombo Village, Kathangachini Sub-Location<br>
+        Kathangachini Location, Gatue Division<br>
+        Tharaka North Sub-County, Kenya</p>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="c-icon">🕘</div>
+      <div>
+        <h4>Availability</h4>
+        <p>Monday – Saturday: 8:00 AM – 6:00 PM<br>
+        Sunday: By appointment only</p>
+      </div>
+    </div>
+
+    <a class="wa-btn" href="https://wa.me/+254798258376" target="_blank" rel="noopener">
+      💬 &nbsp;Message Us on WhatsApp
+    </a>
+  </div>
+
+  <!-- RIGHT: Form -->
+  <div class="contact-form-wrap">
+    <h2>Send Us a Message</h2>
+    <p>Fill in the form below and we'll get back to you as soon as possible.</p>
+
+    <div class="success-msg" id="successMsg">
+      ✅ Thank you! Your message has been sent. We'll be in touch soon.
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" placeholder="e.g. John" />
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" placeholder="e.g. Mwenda" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="you@example.com" />
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone / WhatsApp Number</label>
+      <input type="tel" id="phone" placeholder="+254 7XX XXX XXX" />
+    </div>
+
+    <div class="form-group">
+      <label for="subject">What is this about?</label>
+      <select id="subject">
+        <option value="">— Select a topic —</option>
+        <option value="membership">Joining TJYG / Membership</option>
+        <option value="event">Events & Volunteering</option>
+        <option value="partnership">Partnership / Sponsorship</option>
+        <option value="donation">Donation / Funding</option>
+        <option value="general">General Enquiry</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Your Message</label>
+      <textarea id="message" placeholder="Tell us how we can help you..."></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="handleSubmit()">Send Message</button>
+    <p class="form-note">We do not share your details with third parties.</p>
+  </div>
+</div>
+
+<!-- QUICK LINKS -->
+<div class="quick-links">
+  <h2>Looking for Something Specific?</h2>
+  <p>Navigate directly to what you need.</p>
+  <div class="ql-grid">
+    <a class="ql-card" href="/membership.html">
+      <div class="ql-icon">🤝</div>
+      <span>Join TJYG</span>
+    </a>
+    <a class="ql-card" href="/events.html">
+      <div class="ql-icon">📅</div>
+      <span>Upcoming Events</span>
+    </a>
+    <a class="ql-card" href="/team.html">
+      <div class="ql-icon">👥</div>
+      <span>Our Team</span>
+    </a>
+    <a class="ql-card" href="/WAR.html">
+      <div class="ql-icon">🌿</div>
+      <span>About TJYG</span>
+    </a>
+    <a class="ql-card" href="https://wa.me/+254798258376" target="_blank" rel="noopener">
+      <div class="ql-icon">💬</div>
+      <span>WhatsApp Us</span>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer-main">
+  <div class="footer-brand">
+    <h3>🌿 Tuinue Jamii Youth Group</h3>
+    <p>A youth-led group dedicated to environmental conservation and community development in Kathangachini, Tharaka North Sub-County, Kenya. Founded 2023.</p>
+    <a class="footer-wa-sm" href="https://wa.me/+254798258376">💬 Chat on WhatsApp</a>
+  </div>
+  <div class="footer-col">
+    <h4>About Us</h4>
+    <ul>
+      <li><a href="/WAR.html">Who We Are</a></li>
+      <li><a href="/team.html">Our Team</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Get Involved</h4>
+    <ul>
+      <li><a href="/events.html">Events</a></li>
+      <li><a href="/membership.html">Join TJYG</a></li>
+      <li><a href="/contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="mailto:tuinuejamii2023@gmail.com">tuinuejamii2023@gmail.com</a></li>
+      
+      <li><a href="tel:+254798258376">+254 798 258376</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 Tuinue Jamii Youth Group (TJYG). All rights reserved.</span>
+  <span>
+    <a href="/">Home</a> &nbsp;|&nbsp;
+    <a href="/WAR.html">About</a> &nbsp;|&nbsp;
+    <a href="/events.html">Events</a> &nbsp;|&nbsp;
+    <a href="/membership.html">Membership</a> &nbsp;|&nbsp;
+    <a href="/contact.html">Contact</a>
+  </span>
+</div>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  function handleSubmit() {
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    if (!fname || !email || !message) {
+      alert('Please fill in your name, email, and message before sending.');
+      return;
+    }
+    // Show success message (in production, replace with a real form backend e.g. Formspree)
+    document.getElementById('successMsg').classList.add('show');
+    document.getElementById('fname').value = '';
+    document.getElementById('lname').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('subject').value = '';
+    document.getElementById('message').value = '';
+    window.scrollTo({ top: document.querySelector('.contact-form-wrap').offsetTop - 100, behavior: 'smooth' });
+  }
+</script>
 </body>
 </html>
